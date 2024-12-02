@@ -25,8 +25,10 @@ export function calculateTotalDistance(pairs: ListPairs): number {
   const sortedLeft = [...pairs.leftList].sort((a, b) => a - b);
   const sortedRight = [...pairs.rightList].sort((a, b) => a - b);
 
-  return sortedLeft.reduce((total, leftNum, index) => {
+  const total = sortedLeft.reduce((total, leftNum, index) => {
     const rightNum = sortedRight[index];
     return total + Math.abs(leftNum - rightNum);
   }, 0);
+
+  return total;
 }
