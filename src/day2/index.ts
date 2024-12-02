@@ -1,9 +1,13 @@
 import { parseInput } from '../utils';
-import { parseReports, countSafeReports } from './solution';
+import {
+  parseReports,
+  countSafeReports,
+  countSafeReportsWithDampener,
+} from './solution';
 
 const filePath = './src/day2/input.txt';
 const input = await parseInput(filePath);
 const reports = parseReports(input);
-const safeReportsCount = countSafeReports(reports);
 
-console.log('Number of safe reports:', safeReportsCount);
+console.log(countSafeReports(reports));
+console.log(countSafeReportsWithDampener(reports));

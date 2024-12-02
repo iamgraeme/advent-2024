@@ -41,3 +41,38 @@ export function countSafeReports(reports: number[][]): number {
 
   return safeCount;
 }
+
+function isReportSafeWithDampener(report: number[]): boolean {
+  if (isReportSafe(report)) {
+    return true;
+  }
+
+  for (let i = 0; i < report.length; i++) {
+    const modifiedReport = [
+      ...report.slice(0, i),
+      ...report.slice(i + 1),
+    ];
+
+    if (isReportSafe(modifiedReport)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+export function countSafeReportsWithDampener(
+  reports: number[][]
+): number {
+  let safeCount = 0;
+
+  for (let i = 0; i < reports.length; i++) {
+    const report = reports[i];
+
+    if (isReportSafeWithDampener(report)) {
+      safeCount = safeCount + 1;
+    }
+  }
+
+  return safeCount;
+}
