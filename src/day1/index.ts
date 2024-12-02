@@ -1,3 +1,5 @@
+import { parseListPairs, calculateTotalDistance } from './solution';
+
 export async function parseInput(filePath: string): Promise<string> {
   const file = Bun.file(filePath);
 
@@ -12,3 +14,7 @@ export async function parseInput(filePath: string): Promise<string> {
 
 const filePath = './src/day1/input.txt';
 const input = await parseInput(filePath);
+const list = parseListPairs(input);
+const totalDistance = calculateTotalDistance(list);
+
+console.log(totalDistance);
