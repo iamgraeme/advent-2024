@@ -22,8 +22,9 @@ export function parseListPairs(input: string): ListPairs {
 }
 
 export function calculateTotalDistance(pairs: ListPairs): number {
-  const sortedLeft = [...pairs.leftList].sort((a, b) => a - b);
-  const sortedRight = [...pairs.rightList].sort((a, b) => a - b);
+  const { leftList, rightList } = pairs;
+  const sortedLeft = [...leftList].sort((a, b) => a - b);
+  const sortedRight = [...rightList].sort((a, b) => a - b);
 
   const total = sortedLeft.reduce((total, leftNum, index) => {
     const rightNum = sortedRight[index];
@@ -31,4 +32,15 @@ export function calculateTotalDistance(pairs: ListPairs): number {
   }, 0);
 
   return total;
+}
+
+export function calculateSimilarityScore(pairs: ListPairs): number {
+  const { leftList, rightList } = pairs;
+  return leftList.reduce((total, leftNum) => {
+    const occurrences = rightList.filter(
+      (rightNum) => rightNum === leftNum
+    ).length;
+
+    return total + leftNum * occurrences;
+  }, 0);
 }

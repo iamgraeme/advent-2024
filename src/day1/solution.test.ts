@@ -1,5 +1,9 @@
 import { expect, test, describe, it } from 'bun:test';
-import { parseListPairs, calculateTotalDistance } from './solution';
+import {
+  parseListPairs,
+  calculateTotalDistance,
+  calculateSimilarityScore,
+} from './solution';
 
 describe('Day 1', () => {
   describe('calculateTotalDistance', () => {
@@ -11,6 +15,18 @@ describe('Day 1', () => {
 
       const result = calculateTotalDistance(input);
       expect(result).toBe(11);
+    });
+  });
+
+  describe('calculateSimilarityScore', () => {
+    it('should calculate the similarity score based on occurrences', () => {
+      const input = {
+        leftList: [3, 4, 2, 1, 3, 3],
+        rightList: [4, 3, 5, 3, 9, 3],
+      };
+
+      const result = calculateSimilarityScore(input);
+      expect(result).toBe(31);
     });
   });
 

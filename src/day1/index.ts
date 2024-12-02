@@ -1,4 +1,8 @@
-import { parseListPairs, calculateTotalDistance } from './solution';
+import {
+  parseListPairs,
+  calculateTotalDistance,
+  calculateSimilarityScore,
+} from './solution';
 
 export async function parseInput(filePath: string): Promise<string> {
   const file = Bun.file(filePath);
@@ -18,3 +22,7 @@ const list = parseListPairs(input);
 const totalDistance = calculateTotalDistance(list);
 
 console.log(totalDistance);
+
+console.log('\nPart 2:');
+const similarityScore = calculateSimilarityScore(list);
+console.log(similarityScore);
